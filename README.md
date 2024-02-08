@@ -19,7 +19,7 @@ clone the repo
 git clone https://github.com/BramSuurdje/Dotfiles
 ```
 
-use stow to install the Dotfiles
+use stow to create symlinks to use the Dotfiles
 ```
 stow .
 ```
