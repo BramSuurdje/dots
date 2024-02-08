@@ -17,15 +17,22 @@ plugins=(
     zsh-autosuggestions
     you-should-use
     zsh-syntax-highlighting
+    extract
+    web-search
+    docker
 )
 
 source $ZSH/oh-my-zsh.sh
 
+# Exports
+export EDITOR=nvim
+export VISUAL=nvim
 
 alias vup='wg-quick up laptop'
 alias vdown='wg-quick down laptop'
 alias vm='/home/bram/.config/hypr/scripts/vm.sh'
-alias n='nvim'
+alias vim='nvim'
+alias ls='eza -alh --color=always --group-directories-first'
 # Check archlinux plugin commands here
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/archlinux
 
@@ -34,6 +41,8 @@ alias n='nvim'
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
 #pokemon-colorscripts --no-title -s -r
 
+# Remove duplicates from $PATH
+typeset -U PATH
 
 ### From this line is for pywal-colors
 # Import colorscheme from 'wal' asynchronously
@@ -53,3 +62,14 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /usr/share/nvm/init-nvm.sh
+
+# Functions
+refreshMirrors() {
+  sudo reflector --verbose \
+  --latest 15 \
+  --fastest 15 \
+  --age 10 \
+  --protocol https \
+  --sort rate \
+  --save /etc/pacman.d/mirrorlist
+}
