@@ -1,6 +1,6 @@
 # Dotfiles
 
-This is my repo for my Dotfiles
+This is the repo for my Dotfiles
 
 ## How to use this config
 
